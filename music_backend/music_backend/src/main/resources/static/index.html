@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>InEar 🎧</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Fondo garantizado -->
+<img src="assets/fondo.jpeg" class="bg-image" alt="fondo">
+
+<header>
+    <div class="logo">🎧 InEar</div>
+    <nav class="navbar" id="privateNav" hidden>
+        <button onclick="showSection('home')">Mis canciones</button>
+        <button onclick="showSection('upload')">Subir canción</button>
+        <button onclick="showSection('profile')">Administrar canciones</button>
+        <button type="button" id="logoutBtn">Cerrar sesión</button>
+    </nav>
+</header>
+
+<main>
+
+
+    <!-- ACCESO: iniciar sesión o crear cuenta -->
+    <section id="authSection" class="section active">
+        <div class="form-box">
+            <h2 id="authTitle">Iniciar sesión</h2>
+
+            <form id="authForm">
+                <div id="nameField" class="auth-field" hidden>
+                    <label for="authName">Nombre</label>
+                    <input type="text" id="authName" placeholder="Tu nombre">
+                </div>
+
+                <div class="auth-field">
+                    <label for="authEmail">Correo electrónico</label>
+                    <input type="email" id="authEmail" placeholder="Tu correo" required>
+                </div>
+
+                <div class="auth-field">
+                    <label for="authPassword">Contraseña (Mínimo 8 caracteres)</label>
+                    <input type="password" id="authPassword"
+                           placeholder="Tu contraseña" minlength="8" required>
+                </div>
+
+                <button type="submit" id="authSubmit">Iniciar sesión</button>
+                <p id="authMessage"></p>
+            </form>
+
+            <p id="authSwitchText">¿No tenés cuenta?</p>
+            <button type="button" id="authSwitch" onclick="toggleAuthMode()">
+                Crear cuenta
+            </button>
+        </div>
+    </section>
+
+    <!-- SECCIÓN INICIO -->
+    <section id="home" class="section">
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Buscar canción o artista...">
+
+            <select id="genreFilter">
+                <option value="">Todos los géneros</option>
+                <option value="Trap">Trap</option>
+                <option value="Rap">Rap</option>
+                <option value="Hip-Hop">Hip-Hop</option>
+                <option value="Drill">Drill</option>
+                <option value="Reggaetón">Reggaetón</option>
+                <option value="Pop">Pop</option>
+                <option value="Rock">Rock</option>
+                <option value="R&B">R&B</option>
+                <option value="Soul">Soul</option>
+                <option value="Electrónica">Electrónica</option>
+                <option value="House">House</option>
+                <option value="Techno">Techno</option>
+                <option value="Ambient">Ambient</option>
+                <option value="Lo-Fi">Lo-Fi</option>
+                <option value="Phonk">Phonk</option>
+                <option value="Hyperpop">Hyperpop</option>
+                <option value="Indie">Indie</option>
+                <option value="Metal">Metal</option>
+                <option value="Punk">Punk</option>
+                <option value="Jazz">Jazz</option>
+                <option value="Blues">Blues</option>
+                <option value="Funk">Funk</option>
+                <option value="Reggae">Reggae</option>
+                <option value="Música latina">Música latina</option>
+                <option value="Clásica">Clásica</option>
+                <option value="Otro">Otro</option>
+            </select>
+
+            <button onclick="applyFilter()">Buscar</button>
+        </div>
+        <div id="recommendedList" class="song-list"></div>
+    </section>
+
+    <!-- SECCIÓN SUBIR -->
+    <section id="upload" class="section">
+        <div class="form-box">
+            <h3>Subir canción</h3>
+            <label for="title">Título</label>
+            <input type="text" id="title" placeholder="Título">
+
+            <label for="artist">Artista</label>
+            <input type="text" id="artist" placeholder="Artista">
+
+            <label for="songGenre">Género musical</label>
+            <select id="songGenre" name="genre" required>
+                <option value="" disabled selected>Seleccioná un género</option>
+                <option value="Trap">Trap</option>
+                <option value="Rap">Rap</option>
+                <option value="Hip-Hop">Hip-Hop</option>
+                <option value="Drill">Drill</option>
+                <option value="Reggaetón">Reggaetón</option>
+                <option value="Pop">Pop</option>
+                <option value="Rock">Rock</option>
+                <option value="R&B">R&B</option>
+                <option value="Soul">Soul</option>
+                <option value="Electronic">Electrónica</option>
+                <option value="House">House</option>
+                <option value="Techno">Techno</option>
+                <option value="Ambient">Ambient</option>
+                <option value="Lo-Fi">Lo-Fi</option>
+                <option value="Phonk">Phonk</option>
+                <option value="Hyperpop">Hyperpop</option>
+                <option value="Indie">Indie</option>
+                <option value="Metal">Metal</option>
+                <option value="Punk">Punk</option>
+                <option value="Jazz">Jazz</option>
+                <option value="Blues">Blues</option>
+                <option value="Funk">Funk</option>
+                <option value="Reggae">Reggae</option>
+                <option value="Latin">Música latina</option>
+                <option value="Classical">Clásica</option>
+                <option value="Other">Otro</option>
+            </select>
+
+            <label for="file">Archivo de audio</label>
+            <input type="file" id="file" accept="audio/*">
+
+            <label for="cover">Portada de la canción</label>
+            <input type="file" id="cover" accept="image/*">
+            <button onclick="addSong()">Publicar</button>
+        </div>
+    </section>
+
+    <!-- SECCIÓN PERFIL -->
+    <section id="profile" class="section">
+        <div id="mySongsList" class="song-list"></div>
+    </section>
+
+</main>
+
+<footer>
+    InEar 🎧 - Tu música siempre contigo
+</footer>
+
+<script src="https://unpkg.com/wavesurfer.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+﻿# Archivos de IntelliJ IDEA
+.idea/
+*.iml
+
+# Java y Maven
+**/target/
+*.class
+
+# Archivos temporales de Windows
+Thumbs.db
+.DS_Store
+
+# Configuración local y secretos
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log

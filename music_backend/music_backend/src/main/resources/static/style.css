@@ -226,3 +226,142 @@ footer {
     background-color: #15121c;
     color: #f4efff;
 }
+
+
+/* =========================================
+   INEAR - DISEÑO RESPONSIVE MOBILE FIRST
+========================================= */
+
+/* TABLETS */
+@media (max-width: 768px) {
+
+    header {
+        flex-wrap: wrap;
+        padding: 14px 18px;
+        gap: 12px;
+    }
+
+    header .logo {
+        font-size: 22px;
+    }
+
+    header .navbar {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        width: 100%;
+    }
+
+    header .navbar button {
+        width: 100%;
+        min-height: 50px;
+        margin: 0;
+        padding: 12px;
+        font-size: 14px;
+        border-radius: 8px;
+    }
+
+    .search-box {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .search-box input {
+        grid-column: 1 / -1;
+    }
+
+    .search-box input,
+    .search-box select,
+    .search-box button {
+        width: 100%;
+        min-width: 0;
+        min-height: 48px;
+        box-sizing: border-box;
+        font-size: 15px;
+        padding: 12px;
+    }
+
+    .song {
+        flex-wrap: wrap;
+    }
+
+    .wave-wrapper {
+        max-width: 100%;
+    }
+}
+
+/* CELULARES */
+@media (max-width: 480px) {
+
+    header {
+        padding: 16px;
+        gap: 14px;
+    }
+
+    header .logo {
+        font-size: 24px;
+    }
+
+    header .navbar {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    header .navbar button {
+        min-height: 56px;
+        padding: 12px 8px;
+        font-size: 14px;
+        font-weight: 700;
+    }
+
+    .section {
+        padding: 16px;
+    }
+
+    .search-box {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .search-box input,
+    .search-box select,
+    .search-box button {
+        grid-column: auto;
+        min-height: 52px;
+        font-size: 16px;
+        padding: 14px;
+        border-radius: 8px;
+    }
+
+    .form-box {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        padding: 18px;
+        margin: 15px auto;
+    }
+
+    .form-box button,
+    #authForm button {
+        min-height: 52px;
+        font-size: 16px;
+        padding: 13px;
+    }
+
+    .form-box input {
+        min-height: 46px;
+        box-sizing: border-box;
+        font-size: 16px;
+    }
+
+    .song img {
+        width: 65px;
+        height: 65px;
+    }
+
+    footer {
+        padding: 18px 12px;
+        font-size: 13px;
+    }
+}
